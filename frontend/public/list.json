@@ -1,0 +1,66 @@
+[
+    {
+        "id":1,
+        "name":"Story Book",
+        "title":"lorem ipsum dollar spirit",
+        "price":0,
+        "category":"free",
+        "image":"book.jpg"
+    },
+    {
+        "id":1,
+        "name":"Music Book",
+        "title":"lorem ipsum dollar spirit",
+        "price":100,
+        "category":"premium",
+        "image":"book.jpg"
+    },
+    {
+        "id":1,
+        "name":"Sport Book",
+        "title":"lorem ipsum dollar spirit",
+        "price":500,
+        "category":"free",
+        "image":"book.jpg"
+    },
+    {
+        "id":1,
+        "name":"Movie Book",
+        "title":"lorem ipsum dollar spirit",
+        "price":300,
+        "category":"entertainment",
+        "image":"book.jpg"
+    },
+    {
+        "id":1,
+        "name":"Food Book",
+        "title":"lorem ipsum dollar spirit",
+        "price":50,
+        "category":"Food",
+        "image":"book.jpg"
+    },
+    {
+        "id":1,
+        "name":"School Book",
+        "title":"lorem ipsum dollar spirit",
+        "price":150,
+        "category":"free",
+        "image":"book.jpg"
+    },
+    {
+        "id":1,
+        "name":"Dance Book",
+        "title":"lorem ipsum dollar spirit",
+        "price":70,
+        "category":"free",
+        "image":"book.jpg"
+    },
+    {
+        "id":1,
+        "name":"College Book",
+        "title":"lorem ipsum dollar spirit",
+        "price":15,
+        "category":"free",
+        "image":"book.jpg"
+    }
+]
