@@ -1,31 +1,39 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-
+import axios from "axios";
+import toast from "react-hot-toast";
 function Signup() {
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const userInfo = {
       fullname: data.fullname,
       email: data.email,
       password: data.password,
     };
-    console.log(userInfo);
-    // simulate form submission
-    navigate("/"); // redirect to login page
+
+    try {
+      const res = await axios.post("http://localhost:4001/user/signup", userInfo);
+      console.log(res.data);
+      toast.success("signup Successfully");
+      localStorage.setItem("Users",JSON.stringify(res.data.user));
+    } catch (err) {
+      if(err.response){
+        console.log(err);
+        toast.error("Error: " + err.response.data.message);
+      }
+    }
   };
 
   return (
     <>
       <div className='flex h-screen items-center justify-center'>
         <div className="relative border-[2px] shadow-md p-5 rounded-md bg-white text-black dark:bg-slate-800 dark:text-white">
-          {/* Close Button */}
           <Link
             to="/"
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -35,60 +43,49 @@ function Signup() {
 
           <h3 className="font-bold text-lg mb-4">Signup</h3>
 
-          {/* Signup Form */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* Name */}
-            <div className='mt-4 space-y'>
+            <div className='mt-4'>
               <span>Name</span>
-              <br />
-              <br />
+              <br /><br />
               <input
                 type="text"
                 placeholder="username"
                 className='w-80 px-3 py-1 border rounded-md bg-white dark:bg-slate-700 dark:text-white'
                 {...register("fullname", { required: true })}
               />
-              <br />
               {errors.fullname && (
                 <span className="text-sm text-red-500">This field is required</span>
               )}
             </div>
 
-            {/* Email */}
-            <div className='mt-4 space-y'>
+            <div className='mt-4'>
               <span>Email</span>
-              <br />
-              <br />
+              <br /><br />
               <input
                 type="email"
                 placeholder="enter your email"
                 className='w-80 px-3 py-1 border rounded-md bg-white dark:bg-slate-700 dark:text-white'
                 {...register("email", { required: true })}
               />
-              <br />
               {errors.email && (
                 <span className="text-sm text-red-500">This field is required</span>
               )}
             </div>
 
-            {/* Password */}
-            <div className='mt-4 space-y'>
+            <div className='mt-4'>
               <span>Password</span>
-              <br />
-              <br />
+              <br /><br />
               <input
                 type="password"
                 placeholder="enter your password"
                 className='w-80 px-3 py-1 border rounded-md bg-white dark:bg-slate-700 dark:text-white'
                 {...register("password", { required: true })}
               />
-              <br />
               {errors.password && (
                 <span className="text-sm text-red-500">This field is required</span>
               )}
             </div>
 
-            {/* Submit + Login Link */}
             <div className='flex justify-around mt-6'>
               <button
                 type="submit"
